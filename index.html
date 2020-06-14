@@ -51,10 +51,15 @@
 
     </div>
     <div class="row">
-        <div id="firstSide" class="container d-flex flex-column align-items-center side first-side col-auto">
-            <div class="row d-flex justify-content-end">
-                <div class="col-auto">
-                    <ul class="pkm-info list-group" style="font-family: monospace;width: 150px;">
+    
+        <div id="firstSide" class="col-xl-4 container d-flex flex-column align-items-center side first-side ">
+            <div class="row">
+               
+                <div class="col-8 d-flex align-items-center featured-pkm-left" style="height: 366px; width: 360px; border: 3px ridge #206fb4;">
+                    <img class="featured-pkm-image-left img-rounded d-flex" style="height: 360px; width: 360px;" src="./pokemon_img.png" alt="Featured Pokemon" id="left-pkm-img">
+                </div>
+                <div class="col-1 col-xl-2">
+                    <ul class="pkm-info list-group" style="font-family: monospace;width: 130px;">
                         <li class="list-group-item" id="left-pkm-hp">HP:</li>
                         <li class="list-group-item" id="left-pkm-attack">Attack:</li>
                         <li class="list-group-item" id="left-pkm-defense">Defense:</li>
@@ -62,31 +67,28 @@
                         <li class="list-group-item" id="left-pkm-sp-def">Sp. Def:</li>
                         <li class="list-group-item" id="left-pkm-speed">Speed:</li>
                     </ul>
-                </div>
-                <div class="col-auto d-flex align-items-center featured-pkm-left"  style="height: 366px; width: 360px; border: 3px ridge #206fb4">
-                    <img class="featured-pkm-image-left img-rounded d-flex" style="height: 360px; width: 360px;" src="./pokemon_img.png" alt="Featured Pokemon" id="left-pkm-img">
-                </div>
+                </div> 
             </div>
         </div>
-        <div class="col-auto d-flex flex-column align-items-center histogram border" style="width: 400px;height: 365px;">
+
+        <div class="col-12 col-md-12 col-xl-4 d-flex flex-column align-items-center histogram border" style="width: 400px;height: 365px;">
             
         </div>
-        <div id="secondSide" class="container d-flex flex-column align-items-center side second-side col-auto">
+        <div id="secondSide" class="col-xl-4 container d-flex flex-column align-items-center side second-side ">
             <div class="row">
-                <div class="col-auto d-flex align-items-center featured-pkm-right" style="height: 366px; width: 360px; border: 3px ridge #f2c510;">
-                    <img class="featured-pkm-image-right img-rounded" style="height: 360px; width: 360px;" src="./pokemon_img.png" alt="Featured Pokemon" id="right-pkm-img">
+                <div class="col-8 d-flex align-items-center featured-pkm-right" style="height: 366px; width: 360px; border: 3px ridge #f2c510;">
+                    <img class="featured-pkm-image-right img-rounded d-flex" style="height: 360px; width: 360px;" src="./pokemon_img.png" alt="Featured Pokemon" id="right-pkm-img">
                 </div>
-                <div class="col-auto">
-                    <ul class="pkm-info list-group" style="font-family: monospace;width: 150px;">
-                        <li class="list-group-item name" id="right-pkm-hp">HP:</li>
-                        <li class="list-group-item name" id="right-pkm-attack">Attack:</li>
-                        <li class="list-group-item age" id="right-pkm-defense">Defense:</li>
-                        <li class="list-group-item skills" id="right-pkm-sp-atk">Sp. Atk:</li>
-                        <li class="list-group-item name" id="right-pkm-sp-def">Sp. Def:</li>
-                        <li class="list-group-item age" id="right-pkm-speed">Speed:</li>
+                <div class="col-1 col-xl-2">
+                    <ul class="pkm-info list-group" style="font-family: monospace;width: 130px;">
+                        <li class="list-group-item" id="right-pkm-hp">HP:</li>
+                        <li class="list-group-item" id="right-pkm-attack">Attack:</li>
+                        <li class="list-group-item" id="right-pkm-defense">Defense:</li>
+                        <li class="list-group-item" id="right-pkm-sp-atk">Sp. Atk:</li>
+                        <li class="list-group-item" id="right-pkm-sp-def">Sp. Def:</li>
+                        <li class="list-group-item" id="right-pkm-speed">Speed:</li>
                     </ul>
-                </div>
-                
+                </div> 
             </div>
         </div>
     </div>

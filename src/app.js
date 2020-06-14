@@ -132,7 +132,7 @@ function displayPokemons(data){
         }
     })).enter().append('div').style("cursor", "pointer").style("margin-bottom", "15px").attr("class", function(d){
         if(d.Type1 == selectedType || d.Type2 == selectedType){
-            return "col-1 d-flex justify-content-center" + d.Name;
+            return "col-4 col-sm-3 col-md-2 col-xl-1 d-flex justify-content-center" + d.Name;
         }   
     }).attr("id", function(d){
         return "id_" + d.Name;
@@ -170,10 +170,10 @@ function displayPokemons(data){
         
         if(leftPkm != null && rightPkm != null){
             d3.select("svg").remove();
-            var graphData = {
+            /*var graphData = {
                 lastLeftPkmSelected: {HP: leftPkm[0], Attack: leftPkm[1], Defense: leftPkm[2], SpAtk: leftPkm[3], SpDef: leftPkm[4], Speed: leftPkm[5]},
                 lastRightPkmSelected: {HP: rightPkm[0], Attack: rightPkm[1], Defense: rightPkm[2], SpAtk: rightPkm[3], SpDef: rightPkm[4], Speed: rightPkm[5]}
-            };
+            };*/
             const groupData = [
                 { key: 'HP', values:
                                 [
