@@ -132,7 +132,7 @@ function displayPokemons(data){
         }
     })).enter().append('div').style("cursor", "pointer").style("margin-bottom", "15px").attr("class", function(d){
         if(d.Type1 == selectedType || d.Type2 == selectedType){
-            return "col-4 col-sm-3 col-md-2 col-xl-1 d-flex justify-content-center" + d.Name;
+            return "col-6 col-sm-3 col-md-2 col-xl-1 d-flex justify-content-center" + d.Name;
         }   
     }).attr("id", function(d){
         return "id_" + d.Name;
