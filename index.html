@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizualizacija Pokemona i njihovih statistika</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.png"/>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="row align-items-center first ml-5 mr-5">
+        <div class="col d-flex justify-content-center rounded bg-bug h4 pt-1 text-white bug" id="bug" style="font-family: monospace; height: 35px; cursor: pointer;">Bug</div>
+        <div class="col d-flex justify-content-center rounded bg-dragon h4 pt-1 text-white dragon" id="dragon" style="font-family: monospace; height: 35px; cursor: pointer;">Dragon</div>
+        <div class="col d-flex justify-content-center rounded bg-ice h4 pt-1 text-white ice" id="ice" style="font-family: monospace; height: 35px; cursor: pointer;">Ice</div>
+        <div class="col d-flex justify-content-center rounded bg-fighting h4 pt-1 text-white fighting" style="font-family: monospace; height: 35px; cursor: pointer;">Fighting</div>
+        <div class="col d-flex justify-content-center rounded bg-fire h4 pt-1 text-white fire" style="font-family: monospace; height: 35px; cursor: pointer;">Fire</div>
+        <div class="col d-flex justify-content-center rounded bg-flying h4 pt-1 text-white flying" style="font-family: monospace; height: 35px; cursor: pointer;">Flying</div>
+        <div class="col d-flex justify-content-center rounded bg-grass h4 pt-1 text-white grass" style="font-family: monospace; height: 35px; cursor: pointer;">Grass</div>
+        <div class="col d-flex justify-content-center rounded bg-ghost h4 pt-1 text-white ghost" style="font-family: monospace; height: 35px; cursor: pointer;">Ghost</div>
+        <div class="col d-flex justify-content-center rounded bg-ground h4 pt-1 text-white ground" style="font-family: monospace; height: 35px; cursor: pointer;">Ground</div>
+    </div>
+    <div class="row align-items-center ml-5 mr-5 mb-3">
+        <div class="col d-flex justify-content-center rounded bg-electric h4 pt-1 text-white electric" style="font-family: monospace; height: 35px; cursor: pointer;">Electric</div>
+        <div class="col d-flex justify-content-center rounded bg-normal h4 pt-1 text-white normal" style="font-family: monospace; height: 35px; cursor: pointer;">Normal</div>
+        <div class="col d-flex justify-content-center rounded bg-poison h4 pt-1 text-white poison" style="font-family: monospace; height: 35px; cursor: pointer;">Poison</div>
+        <div class="col d-flex justify-content-center rounded bg-psychic h4 pt-1 text-white psychic" style="font-family: monospace; height: 35px; cursor: pointer;">Psychic</div>
+        <div class="col d-flex justify-content-center rounded bg-rock h4 pt-1 text-white rock" style="font-family: monospace; height: 35px; cursor: pointer;">Rock</div>
+        <div class="col d-flex justify-content-center rounded bg-water h4 pt-1 text-white water" style="font-family: monospace; height: 35px; cursor: pointer;">Water</div>
+        <div class="col d-flex justify-content-center rounded bg-steel h4 pt-1 text-white steel" style="font-family: monospace; height: 35px; cursor: pointer;">Steel</div>
+        <div class="col d-flex justify-content-center rounded bg-fairy h4 pt-1 text-white fairy" style="font-family: monospace; height: 35px; cursor: pointer;">Fairy</div>
+    </div>
+    <div class="row align-items-center mb-2">
+        <div class="col-4"></div>
+      <!--  <div class="col-2 d-flex justify-content-center border-left border-top border-bottom">
+            <input type="text" style="height: 31px;" placeholder="Find pokemon..." id="input">
+        </div>
+        <div class="col-1 d-flex justify-content-center border-right border-top border-bottom"> 
+            <button type="button" class="btn btn-default btn-sm border search-btn">
+               Search <img src="./search.png" style="width: 20px; height: 20px;" alt="Search Pokemon">
+            </button>
+        </div>-->
+        <div class="col-4"></div>
+    </div>
+    <div class="row align-items-center ml-5 mr-5 pokemons mb-3">
+
+    </div>
+    <div class="row">
+        <div id="firstSide" class="container d-flex flex-column align-items-center side first-side col-auto">
+            <div class="row d-flex justify-content-end">
+                <div class="col-auto">
+                    <ul class="pkm-info list-group" style="font-family: monospace;width: 150px;">
+                        <li class="list-group-item" id="left-pkm-hp">HP:</li>
+                        <li class="list-group-item" id="left-pkm-attack">Attack:</li>
+                        <li class="list-group-item" id="left-pkm-defense">Defense:</li>
+                        <li class="list-group-item" id="left-pkm-sp-atk">Sp. Atk:</li>
+                        <li class="list-group-item" id="left-pkm-sp-def">Sp. Def:</li>
+                        <li class="list-group-item" id="left-pkm-speed">Speed:</li>
+                    </ul>
+                </div>
+                <div class="col-auto d-flex align-items-center featured-pkm-left"  style="height: 366px; width: 360px; border: 3px ridge #206fb4">
+                    <img class="featured-pkm-image-left img-rounded d-flex" style="height: 360px; width: 360px;" src="./pokemon_img.png" alt="Featured Pokemon" id="left-pkm-img">
+                </div>
+            </div>
+        </div>
+        <div class="col-auto d-flex flex-column align-items-center histogram border" style="width: 400px;height: 365px;">
+            
+        </div>
+        <div id="secondSide" class="container d-flex flex-column align-items-center side second-side col-auto">
+            <div class="row">
+                <div class="col-auto d-flex align-items-center featured-pkm-right" style="height: 366px; width: 360px; border: 3px ridge #f2c510;">
+                    <img class="featured-pkm-image-right img-rounded" style="height: 360px; width: 360px;" src="./pokemon_img.png" alt="Featured Pokemon" id="right-pkm-img">
+                </div>
+                <div class="col-auto">
+                    <ul class="pkm-info list-group" style="font-family: monospace;width: 150px;">
+                        <li class="list-group-item name" id="right-pkm-hp">HP:</li>
+                        <li class="list-group-item name" id="right-pkm-attack">Attack:</li>
+                        <li class="list-group-item age" id="right-pkm-defense">Defense:</li>
+                        <li class="list-group-item skills" id="right-pkm-sp-atk">Sp. Atk:</li>
+                        <li class="list-group-item name" id="right-pkm-sp-def">Sp. Def:</li>
+                        <li class="list-group-item age" id="right-pkm-speed">Speed:</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="./src/app.js"></script>
+</body>
+</html>
+
+<style>
+.bg-bug{
+    background-color: #a8b820;
+}
+.bg-dragon{
+    background-color: #7965f8;
+}
+.bg-ice{
+    background-color: #98d8d8;
+}
+.bg-fighting{
+    background-color: #c14129;
+}
+.bg-fire{
+    background-color: #ea7f30;
+}
+.bg-flying{
+    background-color: #a890f0;
+}
+.bg-grass{
+    background-color: #78c850;
+}
+.bg-ghost{
+    background-color: #705898;
+}
+.bg-ground{
+    background-color: #e0c068;
+}
+.bg-electric{
+    background-color: #f8d030;
+}
+.bg-normal{
+    background-color: #a8a878;
+}
+.bg-poison{
+    background-color: #a14ea0;
+}
+.bg-psychic{
+    background-color: #e35a88;
+}
+.bg-rock{
+    background-color: #b8a038;
+}
+.bg-water{
+    background-color: #6890f0;
+}
+.bg-dark{
+    background-color: #705848;
+}
+.bg-steel{
+    background-color: #b8b8d0;
+}
+.bg-fairy{
+    background-color: #efb6bc;
+}
+</style>
